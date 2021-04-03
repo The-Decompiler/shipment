@@ -8,7 +8,7 @@ export const App = () => {
 	return (
 		<div>
 			{ uploads ?
-				uploads.map(file => (<FileUpload file={file} />))
+				uploads.map(file => (<FileUpload key={uploads.indexOf(file)} file={file} />))
 				: <DragAndDrop setUploads={setUploads} /> }
 		</div>
 	)
