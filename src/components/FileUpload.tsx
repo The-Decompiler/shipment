@@ -38,7 +38,7 @@ export const FileUpload = (props: Props) => {
 			<p>File Size: {props.file.size}</p>
 			<p>{loadFile}%</p>
 			<p>{fileUrl}</p>
-			<p>ERROR: {error}</p>
+			{ error && (<p>ERROR: {error}</p>)}
 		</div>
 	)
 }
