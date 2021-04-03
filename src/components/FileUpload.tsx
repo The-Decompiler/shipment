@@ -13,7 +13,7 @@ export const FileUpload = (props: Props) => {
 	useEffect(() => {
 		if (props.file.size > 10 * 1024 * 1024) {
 			setError("File exceeds the upload limit (10MB)");
-			return
+			return;
 		}
 
 		const uploadTask = storage.ref(`files/${props.file.name}`).put(props.file);
