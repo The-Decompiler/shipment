@@ -7,15 +7,17 @@ import { Footer } from "./components/Footer";
 
 export const App = () => {
 	const [uploads, setUploads] = useState<File[] | null>(null);
+	const [error, setError] = useState("");
 
 	return (
 		<div className="absolute h-full w-full bg-gray-bg z-0" >
+			{ error && (<p>ERROR: {error}</p>)}
 			<Header />
 			{ uploads ?
 				uploads.map(file => (<FileUpload key={uploads.indexOf(file)} file={file} />))
 				: <>
-					<DragAndDrop setUploads={setUploads} />
-					<UploadButton setUploads={setUploads} />
+					<DragAndDrop setUploads={setUploads} setError={setError} />
+					<UploadButton setUploads={setUploads} setError={setError} />
 				</> }
 			<Footer />
 		</div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../firebase";
 
+import { FileUrl } from "./FileUrl";
+
 const dynamicLinkEndpoint = "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=";
 
 type Props = {
@@ -54,7 +56,7 @@ export const FileUpload = (props: Props) => {
 			<p>File Name: {props.file.name}</p>
 			<p>File Size: {props.file.size}</p>
 			<p>{loadFile}%</p>
-			<p>{fileUrl}</p>
+			{ fileUrl && <FileUrl url={fileUrl} />}
 			{ error && (<p>ERROR: {error}</p>)}
 		</div>
 	)
