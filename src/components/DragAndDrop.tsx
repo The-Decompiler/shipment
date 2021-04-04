@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = {
 	setUploads: React.Dispatch<React.SetStateAction<File[] | null>>,
-	setError: React.Dispatch<string>,
+	setError: React.Dispatch<React.SetStateAction<string>>,
 }
 
 export const DragAndDrop = (props: Props) => {
