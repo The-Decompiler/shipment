@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { DragAndDrop } from "./components/DragAndDrop";
 import { UploadButton } from "./components/UploadButton";
 import { FileUpload } from "./components/FileUpload";
+import { ErrorMessage } from "./components/ErrorMessage"
 import { Footer } from "./components/Footer";
 
 export const App = () => {
@@ -11,7 +12,7 @@ export const App = () => {
 
 	return (
 		<div className="absolute h-full w-full bg-gray-bg z-0" >
-			{ error && (<p>ERROR: {error}</p>)}
+			{ error && (<ErrorMessage error={error} />)}
 			<Header />
 			{ uploads ?
 				uploads.map(file => (<FileUpload key={uploads.indexOf(file)} file={file} />))
