@@ -1,7 +1,7 @@
 import React from "react";
 
 type Props = {
-	setUploads: React.Dispatch<React.SetStateAction<File[] | null>>,
+	setUploadsDrop: React.Dispatch<React.SetStateAction<File[] | null>>,
 }
 
 export const DragAndDrop = (props: Props) => {
@@ -10,7 +10,7 @@ export const DragAndDrop = (props: Props) => {
 		e.stopPropagation();
 
 		const { files } = e.dataTransfer;
-		if (files && files.length) props.setUploads([...files]);
+		if (files && files.length) props.setUploadsDrop([...files]);
 	}
 
 	const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
