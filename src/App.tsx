@@ -10,10 +10,10 @@ export const App = () => {
 		<div>
 			{ uploads ?
 				uploads.map(file => (<FileUpload key={uploads.indexOf(file)} file={file} />))
-				: <DragAndDrop setUploads={setUploads} /> }
-			{ uploads ?
-				uploads.map(file => (<FileUpload key={uploads.indexOf(file)} file={file} />))
-				: <UploadButton setUploads={setUploads} /> }
+				: <>
+					<DragAndDrop setUploads={setUploads} />
+					<UploadButton setUploads={setUploads} />
+				</> }
 		</div>
 	)
 }
