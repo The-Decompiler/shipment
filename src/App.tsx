@@ -5,14 +5,16 @@ import { FileUpload } from "./components/FileUpload";
 
 export const App = () => {
 	const [uploads, setUploads] = useState<File[] | null>(null);
+	const [error, setError] = useState("");
 
 	return (
 		<div>
+			{ error && (<p>ERROR: {error}</p>)}
 			{ uploads ?
 				uploads.map(file => (<FileUpload key={uploads.indexOf(file)} file={file} />))
 				: <>
-					<DragAndDrop setUploads={setUploads} />
-					<UploadButton setUploads={setUploads} />
+					<DragAndDrop setUploads={setUploads} setError={setError} />
+					<UploadButton setUploads={setUploads} setError={setError} />
 				</> }
 		</div>
 	)

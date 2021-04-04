@@ -2,6 +2,7 @@ import React from "react";
 
 type Props = {
 	setUploads: React.Dispatch<React.SetStateAction<File[] | null>>,
+	setError: React.Dispatch<React.SetStateAction<string>>,
 }
 
 export const DragAndDrop = (props: Props) => {
@@ -10,7 +11,15 @@ export const DragAndDrop = (props: Props) => {
 		e.stopPropagation();
 
 		const { files } = e.dataTransfer;
-		if (files && files.length) props.setUploads([...files]);
+
+		if (!files) return;
+
+		if (files.length > 5) {
+			props.setError("Only up to 5 files can be uploaded at once.");
+		} else if (files.length) {
+			props.setUploads([...files]);
+		}
+
 	}
 
 	const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
