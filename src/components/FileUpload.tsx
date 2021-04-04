@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../firebase";
 
+const dynamicLinkEndpoint = "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=";
+
 type Props = {
 	file: File,
 }
@@ -20,14 +22,29 @@ export const FileUpload = (props: Props) => {
 		uploadTask.on("state_changed", snapshot => {
 			setLoadFile(Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100));
 		}, error => {
-			setError("Something went wrong...")
+			setError("Something went wrong...");
 			console.log(error);
 		}, () => {
 			storage.ref("files")
 						 .child(props.file.name)
 						 .getDownloadURL()
 						 .then(url => {
-							 setFileUrl(url);
+							 fetch(dynamicLinkEndpoint + import.meta.env.VITE_API_KEY, {
+								 "method": "POST",
+								 "body": JSON.stringify({
+									 "dynamicLinkInfo": {
+										 "domainUriPrefix": "https://shipme.page.link",
+										 "link": url
+									 },
+									 "suffix": { "option": "SHORT" }
+								 }),
+								 "headers": { "Content-Type": "application/json" }
+							 }).then(response => response.json())
+								 .then(data => setFileUrl(data.shortLink))
+								 .catch(error => {
+									 setError("Request failed.");
+									 console.log(error);
+								 });
 						 });
 		});
 	}, []);
