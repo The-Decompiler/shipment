@@ -11,8 +11,6 @@ export const UploadButton = (props: Props) => {
 	}
 
 	return (
-		<div>
-			<input type="file" onChange={handleUpload} multiple />
-		</div>
+		<input type="file" onChange={handleUpload} multiple />
 	)
 }
