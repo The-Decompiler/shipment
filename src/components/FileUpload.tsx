@@ -40,7 +40,11 @@ export const FileUpload = (props: Props) => {
 								 }),
 								 "headers": { "Content-Type": "application/json" }
 							 }).then(response => response.json())
-								 .then(data => setFileUrl(data.shortLink));
+								 .then(data => setFileUrl(data.shortLink))
+								 .catch(error => {
+									 setError("Request failed.");
+									 console.log(error);
+								 });
 						 });
 		});
 	}, []);
