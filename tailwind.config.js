@@ -18,6 +18,9 @@ module.exports = {
 			fontFamily: {
 				sans: ["Poppins", "Arial", "sans-serif"],
 			},
+			fontSize: {
+				'lxs': '0.5rem'
+			},
 		},
 	},
 	variants: {
