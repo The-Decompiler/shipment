@@ -3,6 +3,9 @@ module.exports = {
 	darkMode: false, // or 'media' or 'class'
 	theme: {
 		extend: {
+			inset: {
+				"1/8": "12.5%"
+			},
 			colors: {
 				gray: {
 					"bg": "#ccccccff",
@@ -16,11 +19,21 @@ module.exports = {
 				}
 			},
 			fontFamily: {
-				sans: ["Poppins", "Arial", "sans-serif"],
+				"sans": ["Poppins", "Arial", "sans-serif"],
 			},
 			fontSize: {
-				'lxs': '0.5rem'
+				"lxs": "0.5rem"
 			},
+			animation: {
+				"notify": "notify 0.75s ease-out forwards",
+			},
+			keyframes: {
+				"notify": {
+					"100%": {
+						"transform": "translateY(2.75rem)"
+					}
+				}
+			}
 		},
 	},
 	variants: {
