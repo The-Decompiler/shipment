@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { storage } from "../firebase";
+import { prettyBytes } from "../utils";
 
 const dynamicLinkEndpoint = "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=";
 
@@ -75,7 +76,7 @@ export const FileUpload = (props: Props) => {
 						<svg className={((!clicking && loadFile == 100) ? "text-black" : "text-green-600") + " absolute h-2 w-full left-0 top-full"} x="0px" y="0px" viewBox="0 0 255 255"><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
 					</span>)}
 				<p className="w-56 inline relative float-left truncate overflow-ellipsis text-md">{props.file.name}</p>
-				<p className="inline relative pt-0.5 float-right text-sm">{props.file.size}</p>
+				<p className="inline relative pt-0.5 float-right text-sm">{prettyBytes(props.file.size)}</p>
 			</div>
 		</div>
 	)
