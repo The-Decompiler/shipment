@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Header } from "./components/Header";
 import { DragAndDrop } from "./components/DragAndDrop";
 import { UploadButton } from "./components/UploadButton";
+import { FileUploadWrapper } from "./components/FileUploadWrapper"
 import { FileUpload } from "./components/FileUpload";
 import { Box } from "./components/Box";
 import { ErrorMessage } from "./components/ErrorMessage"
@@ -16,7 +17,9 @@ export const App = () => {
 			{ error && (<ErrorMessage error={error} />)}
 			<Header />
 			{ uploads ?
-				uploads.map(file => (<FileUpload key={uploads.indexOf(file)} file={file} />))
+				<FileUploadWrapper>
+					{ uploads.map(file => (<FileUpload key={uploads.indexOf(file)} file={file} setError={setError} />)) }
+				</FileUploadWrapper>
 				: <>
 					<DragAndDrop setUploads={setUploads} setError={setError} />
 					<UploadButton setUploads={setUploads} setError={setError} />
