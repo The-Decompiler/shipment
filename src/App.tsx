@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { DragAndDrop } from "./components/DragAndDrop";
 import { UploadButton } from "./components/UploadButton";
 import { FileUpload } from "./components/FileUpload";
+import { Box } from "./components/Box";
 import { ErrorMessage } from "./components/ErrorMessage"
 import { Footer } from "./components/Footer";
 
@@ -20,6 +21,7 @@ export const App = () => {
 					<DragAndDrop setUploads={setUploads} setError={setError} />
 					<UploadButton setUploads={setUploads} setError={setError} />
 				</> }
+			<Box uploads={uploads} />
 			<Footer />
 		</div>
 	)
