@@ -13,7 +13,7 @@ export const Box = (props: Props) => {
 			{ !props.uploads ?
 				<img className="absolute top-1/4 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-8 select-none z-20"
 				src={box1} alt="Drop box" />
-				: <img className="absolute top-1/4 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-10 select-none z-20"
+				: <img className="absolute top-1/4 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-10 md:-translate-y-28 select-none z-20"
 				src={box2} alt="Drop box" />
 			}
 		</>

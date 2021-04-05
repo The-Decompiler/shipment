@@ -66,17 +66,17 @@ export const FileUpload = (props: Props) => {
 				onMouseEnter={() => loadFile == 100 ? setShowTooltip(true) : null}
 				onMouseLeave={() => setShowTooltip(false)}
 			>
-			<div className={(!clicking ? "bg-btn-primary hover:bg-btn-hover" : "bg-btn-active") + " absolute h-8 rounded-full px-3 py-1 bg-btn-primary"}
+			<div className={(!clicking ? "bg-btn-primary hover:bg-btn-hover" : "bg-btn-active") + " absolute h-9 rounded-full px-3 py-1 bg-btn-primary"}
 				style={{ width: (loadFile / 5).toString() + "rem" }}
 			/>
-			<div className={"w-full h-8 rounded-full px-3 py-1 bg-btn-active"}>
+			<div className={"w-full h-9 rounded-full px-3 py-1 bg-btn-active"}>
 				{showTooltip &&
 					(<span className={((!clicking && loadFile == 100) ? "w-24 bg-black" : "w-16 bg-green-600") + " rounded-lg py-1 absolute left-1/2 transform -translate-x-1/2 -translate-y-8 text-white text-center text-xs"}>
 						{(!clicking) ? "Click to Copy" : "Copied!"}
 						<svg className={((!clicking && loadFile == 100) ? "text-black" : "text-green-600") + " absolute h-2 w-full left-0 top-full"} x="0px" y="0px" viewBox="0 0 255 255"><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
 					</span>)}
-				<p className="w-56 inline relative float-left truncate overflow-ellipsis text-md">{props.file.name}</p>
-				<p className="inline relative pt-0.5 float-right text-sm">{prettyBytes(props.file.size)}</p>
+				<p className="w-56 inline relative pt-0.5 float-left truncate overflow-ellipsis text-md">{props.file.name}</p>
+				<p className="inline relative pt-1 float-right text-sm">{prettyBytes(props.file.size)}</p>
 			</div>
 		</div>
 	)
