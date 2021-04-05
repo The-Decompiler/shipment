@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import hexagon from "../static/hexagon.png";
-import box1 from "../static/box1.gif";
 
 type Props = {
 	setUploads: React.Dispatch<React.SetStateAction<File[] | null>>,
@@ -39,20 +38,16 @@ export const DragAndDrop = (props: Props) => {
 	};
 
 	return (
-		<>
-			<div className="invisible md:visible w-full h-full select-none z-20"
-				onDrop={handleDrop}
-				onDragEnter={handleDragIn}
-				onDragOver={handleDragIn}
-				onDragLeave={handleDragLeave}
-			>
-				<img className={"absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-6 " + (dragging && "scale-105")} src={hexagon} alt="Drop your files here" />
-				<p className={"absolute top-1/3 left-1/2 transform -translate-x-1/2 translate-y-1/4 w-60 text-center text-4xl text-gray-hex " + (dragging && "scale-105")}>
-					Drop your files here
-				</p>
-			</div>
-			<img className="absolute top-1/4 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-8 select-none z-20"
-			src={box1} alt="Drop box" />
-		</>
+    <div className="invisible md:visible w-full h-full select-none z-20"
+			onDrop={handleDrop}
+			onDragEnter={handleDragIn}
+			onDragOver={handleDragIn}
+			onDragLeave={handleDragLeave}
+		>
+			<img className={"absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-6 " + (dragging && "scale-105")} src={hexagon} alt="Drop your files here" />
+			<p className={"absolute top-1/3 left-1/2 transform -translate-x-1/2 translate-y-1/4 w-60 text-center text-4xl text-gray-hex " + (dragging && "scale-105")}>
+				Drop your files here
+			</p>
+		</div>
 	)
 }
