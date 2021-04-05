@@ -5,8 +5,11 @@ import { prettyBytes } from "../utils";
 const dynamicLinkEndpoint = "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=";
 
 type Props = {
+	index: number,
 	file: File,
 	setError: React.Dispatch<React.SetStateAction<string>>,
+	finished: boolean[],
+	setFinished: React.Dispatch<React.SetStateAction<boolean[]>>,
 }
 
 export const FileUpload = (props: Props) => {
@@ -43,7 +46,12 @@ export const FileUpload = (props: Props) => {
 								 }),
 								 "headers": { "Content-Type": "application/json" }
 							 }).then(response => response.json())
-								 .then(data => setFileUrl(data.shortLink))
+								 .then(data => {
+									 setFileUrl(data.shortLink);
+									 let newArray = props.finished;
+									 newArray[props.index - 1] = !(props.finished[props.index - 1]);
+									 props.setFinished(newArray);
+								 })
 								 .catch(error => {
 									 props.setError("Request failed.");
 									 console.log(error);
