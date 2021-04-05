@@ -27,7 +27,7 @@ export const DragAndDrop = (props: Props) => {
 
 	}
 
-	const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+	const handleDragIn = (e: React.DragEvent<HTMLDivElement>) => {
 		e.preventDefault();
 		e.stopPropagation();
 		setDragging(true);
@@ -40,14 +40,14 @@ export const DragAndDrop = (props: Props) => {
 
 	return (
 		<>
-			<div className={"invisible md:visible absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-2/3 select-none z-20 " + (dragging && "scale-105")}
+			<div className="invisible md:visible w-full h-full select-none z-20"
 				onDrop={handleDrop}
-				onDragEnter={handleDragEnter}
+				onDragEnter={handleDragIn}
+				onDragOver={handleDragIn}
 				onDragLeave={handleDragLeave}
 			>
-				<img src={hexagon} alt="Drop your files here" />
-				<p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-20
-					w-60 text-center text-4xl text-gray-hex">
+				<img className={"absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-6 " + (dragging && "scale-105")} src={hexagon} alt="Drop your files here" />
+				<p className={"absolute top-1/3 left-1/2 transform -translate-x-1/2 translate-y-1/4 w-60 text-center text-4xl text-gray-hex " + (dragging && "scale-105")}>
 					Drop your files here
 				</p>
 			</div>
