@@ -33,16 +33,16 @@ export const App = () => {
 			<Header />
 			{ (uploads && finished.every(i => { return i === true })) ?
 				<CargoWrapper>
-					{uploads.map(file => (<Cargo key={uploads.indexOf(file)}
-						index={uploads.indexOf(file)}
+					{uploads.map((file, index) => (<Cargo key={index}
+						index={index}
 						file={file}
 						fileUrl={fileUrl} />))
 					}
 				</CargoWrapper>
 				: uploads ?
 					<FileUploadWrapper>
-						{uploads.map(file => (<FileUpload key={uploads.indexOf(file)}
-							index={uploads.indexOf(file)}
+						{uploads.map((file, index) => (<FileUpload key={index}
+							index={index}
 							file={file}
 							setError={setError}
 							finished={finished}

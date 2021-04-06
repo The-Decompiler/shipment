@@ -17,7 +17,7 @@ export const Cargo = (props: Props) => {
 	const handleClick = () => {
 		setClicking(true);
 		setTimeout(() => setClicking(false), 500);
-		navigator.clipboard.writeText(props.fileUrl[props.index - 1]);
+		navigator.clipboard.writeText(props.fileUrl[props.index]);
 	}
 
 	return (

@@ -49,11 +49,11 @@ export const FileUpload = (props: Props) => {
 							 }).then(response => response.json())
 								 .then(data => {
 									 let urlArray = props.fileUrl;
-									 urlArray[props.index - 1] = data.shortLink;
+									 urlArray[props.index] = data.shortLink;
 									 props.setFileUrl(urlArray);
 									 let finArray = props.finished;
-									 finArray[props.index - 1] = !(props.finished[props.index - 1]);
-									 props.setFinished(finArray);
+									 finArray[props.index] = true;
+									 props.setFinished([...finArray]);
 								 })
 								 .catch(error => {
 									 props.setError("Request failed.");
