@@ -32,11 +32,12 @@ export const App = () => {
 			{ error && (<ErrorMessage error={error} />)}
 			<Header />
 			{ (uploads && finished.every(i => { return i === true })) ?
-				<CargoWrapper>
+				<CargoWrapper fileLength={fileLength}>
 					{uploads.map((file, index) => (<Cargo key={index}
 						index={index}
 						file={file}
-						fileUrl={fileUrl} />))
+						fileUrl={fileUrl}
+						fileLength={fileLength} />))
 					}
 				</CargoWrapper>
 				: uploads ?
