@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 type Props = {
+	setFileLength: React.Dispatch<React.SetStateAction<number>>,
 	setUploads: React.Dispatch<React.SetStateAction<File[] | null>>,
 	setError: React.Dispatch<React.SetStateAction<string>>,
 }
@@ -21,6 +22,7 @@ export const UploadButton = (props: Props) => {
 		if (files.length > 5) {
 			props.setError("Only up to 5 files can be uploaded at once.");
 		} else if (files.length) {
+			props.setFileLength(files.length);
 			props.setUploads([...files]);
 		}
 	}

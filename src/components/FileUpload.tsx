@@ -5,13 +5,17 @@ import { prettyBytes } from "../utils";
 const dynamicLinkEndpoint = "https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=";
 
 type Props = {
+	index: number,
 	file: File,
 	setError: React.Dispatch<React.SetStateAction<string>>,
+	finished: boolean[],
+	setFinished: React.Dispatch<React.SetStateAction<boolean[]>>,
+	fileUrl: string[],
+	setFileUrl: React.Dispatch<React.SetStateAction<string[]>>,
 }
 
 export const FileUpload = (props: Props) => {
 	const [loadFile, setLoadFile] = useState(0);
-	const [fileUrl, setFileUrl] = useState("");
 	const [clicking, setClicking] = useState(false);
 	const [showTooltip, setShowTooltip] = useState(false);
 
@@ -43,7 +47,14 @@ export const FileUpload = (props: Props) => {
 								 }),
 								 "headers": { "Content-Type": "application/json" }
 							 }).then(response => response.json())
-								 .then(data => setFileUrl(data.shortLink))
+								 .then(data => {
+									 let urlArray = props.fileUrl;
+									 urlArray[props.index] = data.shortLink;
+									 props.setFileUrl(urlArray);
+									 let finArray = props.finished;
+									 finArray[props.index] = true;
+									 props.setFinished([...finArray]);
+								 })
 								 .catch(error => {
 									 props.setError("Request failed.");
 									 console.log(error);
@@ -57,7 +68,7 @@ export const FileUpload = (props: Props) => {
 		setTimeout(() => setClicking(false), 100);
 
 		if (loadFile != 100) return;
-		navigator.clipboard.writeText(fileUrl);
+		navigator.clipboard.writeText(props.fileUrl[props.index - 1]);
 	}
 
 	return (

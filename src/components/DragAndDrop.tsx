@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import hexagon from "../static/hexagon.png";
 
 type Props = {
+	setFileLength: React.Dispatch<React.SetStateAction<number>>,
 	setUploads: React.Dispatch<React.SetStateAction<File[] | null>>,
 	setError: React.Dispatch<React.SetStateAction<string>>,
 }
@@ -21,6 +22,7 @@ export const DragAndDrop = (props: Props) => {
 		if (files.length > 5) {
 			props.setError("Only up to 5 files can be uploaded at once.");
 		} else if (files.length) {
+			props.setFileLength(files.length);
 			props.setUploads([...files]);
 		}
 
@@ -38,7 +40,7 @@ export const DragAndDrop = (props: Props) => {
 	};
 
 	return (
-    <div className="invisible md:visible w-full h-full select-none z-20"
+		<div className="invisible md:visible w-full h-full select-none z-20"
 			onDrop={handleDrop}
 			onDragEnter={handleDragIn}
 			onDragOver={handleDragIn}
