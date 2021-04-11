@@ -42,7 +42,7 @@ export const Cargo = (props: Props) => {
 					onMouseLeave={() => setShowHover(false)}
 				/>
 				{showHover &&
-					(<span className={(!clicking ? "w-20 md:w-24 bg-black" : "w-12 md:w-16 bg-green-600") + " rounded-lg py-1 absolute transform md:translate-x-6 -translate-y-40 text-white text-center text-lxs md:text-xs z-40 " + (clicking && "translate-x-10")}>
+					(<span className={(!clicking ? "w-20 md:w-24 bg-black" : "w-12 md:w-16 bg-green-600") + " rounded-lg py-1 absolute transform translate-x-12 md:translate-x-10 lg:translate-x-5 -translate-y-52 md:-translate-y-56 text-white text-center text-lxs md:text-xs z-40 " + (clicking && "translate-x-16 md:translate-x-14 lg:translate-x-9")}>
 						{(!clicking) ? "Click to Copy" : "Copied!"}
 						<svg className={(!clicking ? "text-black" : "text-green-600") + " absolute h-2 w-full left-0 top-full"} x="0px" y="0px" viewBox="0 0 255 255"><polygon className="fill-current" points="0,0 127.5,127.5 255,0" /></svg>
 					</span>)}
